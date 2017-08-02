@@ -56,7 +56,7 @@ namespace PrintZebra
             DOCINFOA di = new DOCINFOA();
             bool bSuccess = false; // Assume failure unless you specifically succeed.
 
-            di.pDocName = "OPUS127 ETIQUETAS";
+            di.pDocName = ".NET RAW Document";
             di.pDataType = "RAW";
 
             // Open the printer.
