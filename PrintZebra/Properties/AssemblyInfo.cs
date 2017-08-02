@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // conjunto de atributos. Altere estes valores de atributo para modificar as informações
 // associada a um assembly.
 [assembly: AssemblyTitle("PrintZebra")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Library para para impressão no VB6 diretamente na impressora Zebra")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("PrintZebra")]
 [assembly: AssemblyProduct("PrintZebra")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
@@ -18,14 +18,13 @@ using System.Runtime.InteropServices;
 // para componentes COM. Caso precise acessar um tipo neste assembly de
 // COM, defina o atributo ComVisible como true nesse tipo.
 [assembly: ComVisible(true)]
-//[ComVisible(true)]
 
 // O GUID a seguir será destinado à ID de typelib se este projeto for exposto para COM
-[assembly: Guid("eb09c65e-139c-4a1a-b708-8c7248fb4a24")]
-
+//[assembly: Guid("eb09c65e-139c-4a1a-b708-8c7248fb4a24")]
+[assembly: Guid("65e6293b-2760-444a-b934-ec8bf6f09b88")]
 // As informações da versão de um assembly consistem nos quatro valores a seguir:
 //
-//      Versão Principal
+//      Versão Principal : 1
 //      Versão Secundária 
 //      Número da Versão
 //      Revisão

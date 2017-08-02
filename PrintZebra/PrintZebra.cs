@@ -1,26 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-//using Skiviez.UndiesClient.Domain;
-//using Skiviez.Commons.WinForms;
-//using Skiviez.Commons.Core;
-using System.Globalization;
 using System.Runtime.InteropServices;
 using System.IO;
-using System.Runtime.CompilerServices;
 
 //[assembly: ComVisible(true)]
 //[assembly: Guid("6c87161d-1e02-40ef-8512-82f30bc1ae3e")]
 namespace PrintZebra
 {
-    
     //[ClassInterface(ClassInterfaceType.None)]
+    /// <summary>
+    /// Classe 
+    /// </summary>
     public class RawPrinterHelper
 
     {
         // Structure and API declarions:
+        /// <summary>
+        /// 
+        /// </summary>
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi)]
         public class DOCINFOA
         {
@@ -60,7 +56,7 @@ namespace PrintZebra
             DOCINFOA di = new DOCINFOA();
             bool bSuccess = false; // Assume failure unless you specifically succeed.
 
-            di.pDocName = "My C#.NET RAW Document";
+            di.pDocName = "OPUS127 ETIQUETAS";
             di.pDataType = "RAW";
 
             // Open the printer.
@@ -116,7 +112,7 @@ namespace PrintZebra
             return bSuccess;
         }
 
-        public static bool SendStringToPrinter(string szPrinterName, string szString)
+        public static Int32 SendStringToPrinter(string szPrinterName, string szString)
         {
             IntPtr pBytes;
             Int32 dwCount;
@@ -127,29 +123,15 @@ namespace PrintZebra
             // the string to ANSI text.
             pBytes = Marshal.StringToCoTaskMemAnsi(szString);
             // Send the converted ANSI string to the printer.
-            SendBytesToPrinter(szPrinterName, pBytes, dwCount);
-            Marshal.FreeCoTaskMem(pBytes);
-            return true;
-        }
-
-        //[assembly: ComVisible(true)]
-        //// [ClassInterface(ClassInterfaceType.None), ComSourceInterfaces(typeof(impressaoVB)), Guid("0162cf2b-365d-4dde-86f5-f6343110d1a6")]
-        ////Impressão via vb6
-        //[assembly: Guid("4b8dcb67-ade0-46e6-8554-5c0343d54a84")]
-        //[ProgId("Impressão.VB")]
-        //public class impressaoVB
-        //{
-        //    public string VB;
-        //    public string printername1;
-
-        //    [MethodImpl(MethodImplOptions.NoInlining)]
-        //    public string ImpressaoVB(string VB, string printername1)
-        //    {
-        //        RawPrinterHelper.SendStringToPrinter(printername1, VB);
-        //        return null;
-        //    }
-
-        //}                  
+            bool bSuccess = SendBytesToPrinter(szPrinterName, pBytes, dwCount);
+            Int32 dwError = 0;
+            if (bSuccess == false)
+               {
+                  dwError = Marshal.GetLastWin32Error();
+               }
+               Marshal.FreeCoTaskMem(pBytes);
+            return dwError;
+        }            
 
     }
 }
